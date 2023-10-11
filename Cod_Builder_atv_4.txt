@@ -1,0 +1,134 @@
+
+public class Main
+{
+	public static void main(String[] args) {
+	      PersonagemBuilder builder = new PersonagemBuilder();
+	      Director diretor = new Director();
+	      
+	      builder.construirNome("Senhor das Espadas");
+	      builder.construirClasse("Espadachim");
+	      builder.construirNivel(10);
+	      builder.construirArma("Katana");
+	      
+	      Personagem guerreiro = diretor.construirPersonagem(builder);
+	      
+	      System.out.print(guerreiro);
+		
+	}
+}
+
+
+
+
+public class Personagem
+{
+
+  private String nome;
+  private String classe;
+  private int nivel;
+  private String arma;
+
+  public Personagem ()
+  {
+
+  }
+
+  public Personagem (String nomep, String classep, int nivelp, String armap)
+  {
+    this.nome = nomep;
+    this.classe = classep;
+    this.nivel = nivelp;
+    this.arma = armap;
+  }
+
+  public String getNome ()
+  {
+    return nome;
+  }
+
+  public String setNome (String nomep)
+  {
+    this.nome = nomep;
+  }
+
+  public String getClasse ()
+  {
+    return classe;
+  }
+
+  public String setClasse (String classep)
+  {
+    this.classe = classep;
+  }
+
+  public int getNivel ()
+  {
+    return nivel;
+  }
+
+  public String setNivel (int nivelp)
+  {
+    this.nivel = nivelp;
+  }
+
+  public String getArma ()
+  {
+    return arma;
+  }
+
+  public String setArma (String armap)
+  {
+    this.arma = armap;
+  }
+
+}
+
+
+public interface PersonagemBuilder {
+    
+    public PersonagemBuilder construirNome(String nome); 
+    public PersonagemBuilder construirClasse(String classe);
+    public PersonagemBuilder construirNivel(int nivel); 
+    public PersonagemBuilder construirArma(String arma);
+}
+
+public class PersonagemBuilderImpl implements PersonagemBuilder{
+    
+    public PersonagemBuilderImpl(){
+        PersonagemBuilder p = new PersonagemBuilder;
+    }
+    
+    @Override
+    public void construirNome(String nome){
+        p.setNome(nome);
+        this;
+    }
+    @Override
+    public void construirClasse(String classe){
+        p.setClasse(classe);
+        this;
+    }
+    @Override
+    public void construirNivel(int nivel){
+        p.setNivel(nivel);
+        this;
+    } 
+    @Override
+    public void construirArma(String arma){
+        p.setArma(arma);
+        this;
+    }
+    
+    public Personagem build(){
+        return p;
+    }
+}
+
+public class Director{
+    public Personagem construirPersonagem(PersonagemBuilder builder){
+        return builder.build;
+    }
+}
+
+
+
